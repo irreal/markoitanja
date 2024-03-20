@@ -62,6 +62,48 @@ export default function Home() {
         <br />
         <span className="block">Hvala, vidimo se!</span>
       </div>
+      <p className="flex flex-col">
+        <a href="#" className="underline">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="inline icon icon-tabler icon-tabler-building-church"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 21l18 0" />
+            <path d="M10 21v-4a2 2 0 0 1 4 0v4" />
+            <path d="M10 5l4 0" />
+            <path d="M12 3l0 5" />
+            <path d="M6 21v-7m-2 2l8 -8l8 8m-2 -2v7" />
+          </svg>
+          mapa do crkve
+        </a>
+        <a href="#" className="underline">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="inline icon icon-tabler icon-tabler-tools-kitchen-2"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M19 3v12h-5c-.023 -3.681 .184 -7.406 5 -12zm0 12v6h-1v-3m-10 -14v17m-3 -17v3a3 3 0 1 0 6 0v-3" />
+          </svg>
+          mapa do restorana
+        </a>
+      </p>
     </div>
   );
 }

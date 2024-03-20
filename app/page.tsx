@@ -42,6 +42,12 @@ export default function Home() {
       >
         Tvoja pozivnica
       </a>
+      <a
+        className="w-full text-[#d64578] border-[1px] border-[#d64578] rounded-xl bg-[#d64578] bg-opacity-10"
+        href="/fotograf"
+      >
+        Budi naš fotograf
+      </a>
     </div>
   );
 }
