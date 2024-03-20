@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container, Engine, ISourceOptions } from "@tsparticles/engine";
 
-import { loadAll } from "@tsparticles/all"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
+import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 
 const styleScript = Style_Script({
   weight: "400",
@@ -19,7 +19,7 @@ export default function Home() {
       // starting from v2 you can add only the features you need reducing the bundle size
       // await loadAll(engine);
       //await loadFull(engine);
-      await loadAll(engine);
+      await loadSlim(engine);
       //await loadBasic(engine);
     }).then(() => {
       setInit(true);

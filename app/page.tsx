@@ -27,14 +27,14 @@ export default function Home() {
     <div className="flex flex-col w-full min-h-full gap-6 p-6  items-center text-center text-[#4D5D26] text-4xl max-w-[700px] mx-auto">
       <div>Do svadbe:</div>
       <div className="grid grid-cols-1 sm:grid-cols-4 text-center w-full">
-        <div className="text-[#d64578] text-9xl font-bold">{diffDays}</div>
+        <div className="text-[#d64578] text-7xl font-bold">{diffDays}</div>
         <div className="text-xl">dana</div>
-        <div className="text-[#d64578] text-9xl font-bold">{diffHours}</div>
-        <div className="text-sl">sati</div>
-        <div className="text-[#d64578] text-9xl font-bold">{diffMinutes}</div>
-        <div className="text-sl">minuta</div>
-        <div className="text-[#d64578] text-9xl font-bold">{diffSeconds}</div>
-        <div className="text-sl">sekundi</div>
+        <div className="text-[#d64578] text-7xl font-bold">{diffHours}</div>
+        <div className="text-xl">sati</div>
+        <div className="text-[#d64578] text-7xl font-bold">{diffMinutes}</div>
+        <div className="text-xl">minuta</div>
+        <div className="text-[#d64578] text-7xl font-bold">{diffSeconds}</div>
+        <div className="text-xl">sekundi</div>
       </div>
       <a
         className="w-full text-[#d64578] border-[1px] border-[#d64578] rounded-xl bg-[#d64578] bg-opacity-10"
