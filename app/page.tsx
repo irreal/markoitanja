@@ -24,23 +24,23 @@ export default function Home() {
   const diffSeconds = Math.floor((diff % (1000 * 60)) / 1000);
 
   return (
-    <div className="flex flex-col w-full min-h-full gap-6 p-6  items-center text-center text-[#4D5D26] text-4xl max-w-[700px] mx-auto">
-      <div>Do svadbe:</div>
+    <div className="flex flex-col w-full min-h-full gap-6 p-12  items-center justify-between  text-center text-[#4D5D26] text-2xl max-w-[700px] mx-auto">
+      <div>Odbrojavajte sa nama do velikog dana:</div>
       <div className="grid grid-cols-1 sm:grid-cols-4 text-center w-full">
         <div className="text-[#d64578] text-7xl font-bold">{diffDays}</div>
-        <div className="text-xl">dana</div>
-        <div className="text-[#d64578] text-7xl font-bold">{diffHours}</div>
-        <div className="text-xl">sati</div>
-        <div className="text-[#d64578] text-7xl font-bold">{diffMinutes}</div>
-        <div className="text-xl">minuta</div>
-        <div className="text-[#d64578] text-7xl font-bold">{diffSeconds}</div>
-        <div className="text-xl">sekundi</div>
+        <div className="text-2xl">dana</div>
+        <div className="text-[#d64578] text-6xl font-bold">{diffHours}</div>
+        <div className="text-lg">sati</div>
+        <div className="text-[#d64578] text-5xl font-bold">{diffMinutes}</div>
+        <div className="text-sm">minuta</div>
+        <div className="text-[#d64578] text-4xl font-bold">{diffSeconds}</div>
+        <div className="text-sm">sekundi</div>
       </div>
       <a
         className="w-full text-[#d64578] border-[1px] border-[#d64578] rounded-xl bg-[#d64578] bg-opacity-10"
         href="/pozivnica"
       >
-        Pozivnica
+        Tvoja pozivnica
       </a>
     </div>
   );

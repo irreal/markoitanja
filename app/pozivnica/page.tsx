@@ -1,97 +1,14 @@
 "use client";
 import { Style_Script } from "next/font/google";
 import { useEffect, useMemo, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import type { Container, Engine, ISourceOptions } from "@tsparticles/engine";
-
-import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadAll`, install the "@tsparticles/all" package too.
 
 const styleScript = Style_Script({
   weight: "400",
   subsets: ["latin"],
 });
 export default function Home() {
-  const [init, setInit] = useState(false);
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-      // starting from v2 you can add only the features you need reducing the bundle size
-      // await loadAll(engine);
-      //await loadFull(engine);
-      await loadSlim(engine);
-      //await loadBasic(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
-
-  const particlesLoaded = async (
-    container: Container | undefined
-  ): Promise<void> => {
-    console.log(container);
-  };
-  // const options: ISourceOptions = useMemo<ISourceOptions>(
-  //   () => ({
-  //     spread: 360,
-  //     ticks: 100,
-  //     gravity: 0,
-  //     decay: 0.94,
-  //     startVelocity: 30,
-  //     shapes: ["heart"],
-  //     colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
-  //     particleCount: 50,
-  //     scalar: 2,
-  //   }),
-  //   []
-  // );
-
-  const options: ISourceOptions = useMemo<any>(
-    () => ({
-      fpsLimit: 120,
-      particles: {
-        color: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
-        opacity: {
-          value: 0.5,
-        },
-        move: {
-          direction: "bottom",
-          enable: true,
-          outModes: {
-            default: "bounce",
-          },
-          random: false,
-          speed: 3,
-          straight: false,
-        },
-        number: {
-          density: {
-            enable: true,
-          },
-          value: 180,
-        },
-        shape: {
-          type: "heart",
-        },
-        size: {
-          value: { min: 15, max: 25 },
-        },
-      },
-      detectRetina: true,
-    }),
-    []
-  );
-
   return (
-    <div className="flex flex-col w-full min-h-full gap-6  items-center text-center text-[#4D5D26] text-2xl max-w-[700px] mx-auto">
-      {init && (
-        <Particles
-          id="tsparticles"
-          particlesLoaded={particlesLoaded}
-          options={options}
-        />
-      )}
-
+    <div className="flex flex-col w-full min-h-full gap-6 p-6 items-center text-center text-[#4D5D26] text-2xl max-w-[700px] mx-auto">
       <div>
         U nedelju <span className="text-[#d64578] font-bold">23.06.2024.</span>
       </div>
@@ -104,7 +21,7 @@ export default function Home() {
       </div>
       <div className="font-bold italic">
         imaju nešto važno{" "}
-        <span className="text-[#d64578] italic text-3xl font-bold">DA</span> vam
+        <span className="text-[#d64578] italic text-3xl font-bold">DA</span>{" "}
         kažu. <br />
         Ukoliko želite da saznate šta, kao i:
       </div>
@@ -142,6 +59,8 @@ export default function Home() {
         Matičar i muzičari potvrdili su dolazak na veselje, a mi ćemo biti
         srećni ako i vi to učinite do{" "}
         <span className="font-extrabold">09.06.2024.</span>
+        <br />
+        <span className="block">Hvala, vidimo se!</span>
       </div>
     </div>
   );
