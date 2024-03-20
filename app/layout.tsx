@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Tatjana i Marko",
@@ -16,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} bg-bgf bg-cover bg-right-top md:bg-fill md:bg-center `}
-      >
+      <body className={`bg-bgf bg-cover bg-right-top md:bg-fill md:bg-center `}>
         <div className="w-full h-full bg-transparent">{children}</div>
       </body>
     </html>
