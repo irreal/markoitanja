@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-bgf bg-cover bg-right-top md:bg-fill md:bg-center `}>
+      <body className={`bg-bgf bg-cover bg-right-top md:bg-fill md:bg-center`}>
         <div className="w-full h-full bg-transparent">{children}</div>
       </body>
     </html>
