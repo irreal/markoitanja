@@ -31,7 +31,7 @@
 </script>
 
 <div
-	class="mx-auto flex min-h-full w-full max-w-[700px] flex-col items-center justify-end gap-6 text-center text-2xl text-[#4D5D26]"
+	class="mx-auto flex min-h-[100vh] w-full max-w-[700px] flex-col items-center justify-end gap-6 text-center text-2xl text-[#4D5D26]"
 >
 	<div class="style-script-regular text-5xl leading-snug text-black">
 		Odbrojavajte sa nama do<br />velikog dana

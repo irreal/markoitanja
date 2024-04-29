@@ -1,4 +1,9 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+
+	async function navigateRsvpCb() {
+		await goto('/rsvp');
+	}
 </script>
 
 <div
@@ -90,4 +95,22 @@
 			mapa do restorana
 		</a>
 	</p>
+	<button class="rounded-lg" on:click={navigateRsvpCb}>Potvrdi Dolazak</button>
 </div>
+
+<style>
+	button {
+		border: pink;
+		border-radius: 10px;
+		border-style: solid;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		width: 100%;
+		padding: 7px 10px;
+		background: rgba(255, 255, 255, 0.5);
+		mix-blend-mode: normal;
+		box-shadow: 0px 0px 80px rgba(119, 119, 119, 0.15);
+		backdrop-filter: blur(12.5px);
+		/* Note: backdrop-filter has minimal browser support */
+	}
+</style>

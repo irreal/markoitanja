@@ -104,7 +104,7 @@
 	// });
 </script>
 
-<div class="h-full w-full bg-transparent">
+<div class="min-h-full w-full bg-transparent">
 	<!-- <svelte:component
 		this={ParticlesComponent}
 		id="tsparticles"
