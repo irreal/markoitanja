@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@tsparticles/slim": "^3.3.0",
-		"@tsparticles/svelte": "^3.0.0"
+		"@tsparticles/svelte": "^3.0.0",
+		"daisyui": "^4.10.2"
 	}
 }

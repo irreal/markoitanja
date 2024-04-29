@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	import Counter from './counter.svelte';
+	import { goto } from '$app/navigation';
+
 	let currentTime = Date.now();
 	const targetTime = new Date(2024, 5, 23, 14, 30, 0, 0).getTime();
 	$: diff = targetTime - currentTime;
@@ -16,32 +19,52 @@
 			clearInterval(timer);
 		};
 	});
+	async function navigatePozivnicaCb() {
+		await goto('/pozivnica');
+	}
+	async function navigateFotografCb() {
+		await goto('/fotograf');
+	}
+	async function navigateRsvpCb() {
+		await goto('/rsvp');
+	}
 </script>
 
 <div
-	class="mx-auto flex min-h-full w-full max-w-[700px] flex-col items-center justify-between gap-6 p-12 text-center text-2xl text-[#4D5D26]"
+	class="mx-auto flex min-h-full w-full max-w-[700px] flex-col items-center justify-end gap-6 text-center text-2xl text-[#4D5D26]"
 >
-	<div>Odbrojavajte sa nama do velikog dana:</div>
-	<div class="grid w-full grid-cols-1 text-center sm:grid-cols-4">
-		<div class="text-7xl font-bold text-[#d64578]">{diffDays}</div>
-		<div class="text-2xl">dana</div>
-		<div class="text-6xl font-bold text-[#d64578]">{diffHours}</div>
-		<div class="text-lg">sati</div>
-		<div class="text-5xl font-bold text-[#d64578]">{diffMinutes}</div>
-		<div class="text-sm">minuta</div>
-		<div class="text-4xl font-bold text-[#d64578]">{diffSeconds}</div>
-		<div class="text-sm">sekundi</div>
+	<div class="style-script-regular text-5xl leading-snug text-black">
+		Odbrojavajte sa nama do<br />velikog dana
 	</div>
-	<a
-		class="w-full rounded-xl border-[1px] border-[#d64578] bg-[#d64578] bg-opacity-10 text-[#d64578]"
-		href="/pozivnica"
-	>
-		Tvoja pozivnica
-	</a>
-	<!-- <a
-        class="w-full text-[#d64578] border-[1px] border-[#d64578] rounded-xl bg-[#d64578] bg-opacity-10"
-        href="/fotograf"
-      >
-        Budi naš fotograf
-      </a> -->
+	<div class="w-full">
+		<Counter
+			counter={diffDays}
+			text={`${diffHours} sati ${diffMinutes} minuta ${diffSeconds} sekundi`}
+		/>
+
+		<div
+			class="inter-mit-bld -mt-5 mb-24 flex w-full flex-col items-center justify-center gap-4 px-12 text-black"
+		>
+			<button class="rounded-lg" on:click={navigatePozivnicaCb}>Tvoja Pozivnica</button>
+			<!-- <button class="rounded-lg" on:click={navigateFotografCb}>Budi naš Fotograf</button> -->
+			<button class="rounded-lg" on:click={navigateRsvpCb}>Potvrdi Dolazak</button>
+		</div>
+	</div>
 </div>
+
+<style>
+	button {
+		border: pink;
+		border-radius: 10px;
+		border-style: solid;
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		width: 100%;
+		padding: 7px 10px;
+		background: rgba(255, 255, 255, 0.5);
+		mix-blend-mode: normal;
+		box-shadow: 0px 0px 80px rgba(119, 119, 119, 0.15);
+		backdrop-filter: blur(12.5px);
+		/* Note: backdrop-filter has minimal browser support */
+	}
+</style>
