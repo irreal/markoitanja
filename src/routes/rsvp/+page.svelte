@@ -86,6 +86,7 @@
 	}
 	onMount(() => {
 		guestId = localStorage.getItem('visitorId') || generateRandomId();
+		localStorage.setItem('visitorId', guestId);
 	});
 
 	$: {
