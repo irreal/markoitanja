@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 	import Person from './person.svelte';
 	import { confetti } from 'tsparticles-confetti';
+	import { client } from '$lib/supabase';
 	const defaults = {
 		spread: 360,
 		ticks: 100,
@@ -74,6 +76,17 @@
 	let numberOfPeople = 1;
 	let array: Person[] = [{ name: '', surname: '' }];
 	let submitted = false;
+	let loading = false;
+
+	let guestId: string | null = null;
+	function generateRandomId() {
+		return (
+			Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+		);
+	}
+	onMount(() => {
+		guestId = localStorage.getItem('visitorId') || generateRandomId();
+	});
 
 	$: {
 		if (array.length < numberOfPeople) {
@@ -96,10 +109,51 @@
 		}
 		array = array;
 	}
-	function submitCb() {
-		submitted = true;
-		makeConffetti();
+	async function submitCb() {
+		if (loading) {
+			return;
+		}
+
+		const missingIds: number[] = [];
+		for (let i = 0; i < array.length; i++) {
+			if (!array[i].name || !array[i].surname) {
+				missingIds.push(i + 1);
+			}
+		}
+		if (missingIds.length > 0) {
+			alert(
+				`Molimo vas da popunite sva polja za goste ${missingIds.join(', ')} pre nego što potvrdite dolazak.`
+			);
+			return;
+		}
+
+		loading = true;
+		await new Promise((resolve) => setTimeout(resolve, 2000));
+		try {
+			const { count, error } = await client.from('tim_rsvp').insert(
+				array.map((entry, idx) => ({
+					index: idx,
+					guest_id: guestId,
+					name: entry.name,
+					surname: entry.surname
+				}))
+			);
+			if (error) {
+				throw error;
+			}
+			console.log('upisano gostiju: ', count);
+			submitted = true;
+			makeConffetti();
+		} catch (e) {
+			console.error(e);
+			alert(
+				'Došlo je do greške pri upisu gostiju, molimo te pokušaj ponovo. Ako ne uspe, javi nam da znamo da popravljamo :)'
+			);
+		} finally {
+			loading = false;
+		}
 	}
+
 	async function navigateBackCb() {
 		await goto('/');
 	}
@@ -147,7 +201,13 @@
 				/>
 			{/each}
 		</div>
-		<button class="fancy" on:click={submitCb}> Potvrdi dolazak </button>
+		<button class="fancy" on:click={submitCb}>
+			{#if loading}
+				<span class="loading loading-spinner loading-sm"></span>
+			{:else}
+				Potvrdi dolazak
+			{/if}
+		</button>
 	{:else}
 		<div
 			class="style-script-regular flex h-[80dvh] w-full flex-col items-center justify-center text-center text-5xl text-[#4D5D26]"

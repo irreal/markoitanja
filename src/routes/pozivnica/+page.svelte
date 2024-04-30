@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { confetti } from 'tsparticles-confetti';
 	import { onMount } from 'svelte';
+	import { confetti } from 'tsparticles-confetti';
 	const defaults = {
 		spread: 360,
 		ticks: 100,
