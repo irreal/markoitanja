@@ -30,7 +30,7 @@
 			<tbody>
 				{#each rows as row, i}
 					<tr class="hover">
-						<th>{i}</th>
+						<th>{i + 1}</th>
 						<td>{row.name}</td>
 						<td>{row.surname}</td>
 						<td>{row.index}</td>
