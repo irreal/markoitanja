@@ -165,7 +165,7 @@
 	}
 </script>
 
-<div class="flex w-full flex-col gap-4 p-12 text-lg text-black">
+<div class="mx-auto flex w-full max-w-[700px] flex-col gap-4 p-12 text-lg text-black">
 	{#if !submitted}
 		<div class="style-script-regular text-2xl">
 			Potvrdite dolazak do <strong>09.06.2024</strong>
@@ -180,7 +180,7 @@
 		</div>
 		<div class="flex w-full flex-row items-center justify-center">
 			{#each array as entry, i}
-				<div class="h-12 w-24">
+				<div class="h-12 w-12">
 					<Person />
 				</div>
 			{/each}

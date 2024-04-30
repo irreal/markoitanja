@@ -29,7 +29,7 @@
 			</thead>
 			<tbody>
 				{#each rows as row, i}
-					<tr class="hover">
+					<tr class={`${row.index === 0 ? 'bg-pink-200' : 'bg-pink-100'}`}>
 						<th>{i + 1}</th>
 						<td>{row.name}</td>
 						<td>{row.surname}</td>
