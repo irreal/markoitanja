@@ -1,5 +1,80 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { confetti } from 'tsparticles-confetti';
+	import { onMount } from 'svelte';
+	const defaults = {
+		spread: 360,
+		ticks: 100,
+		gravity: 0,
+		decay: 0.94,
+		startVelocity: 30,
+		shapes: ['heart'],
+		colors: ['FFC0CB', 'FF69B4', 'FF1493', 'C71585']
+	};
+	let interval: number | null = null;
+	onMount(() => {
+		makeConffetti();
+		interval = setInterval(makeConffetti, 5000);
+		return () => {
+			if (interval) {
+				clearInterval(interval);
+			}
+		};
+	});
+
+	function makeConffetti() {
+		confetti({
+			...defaults,
+			particleCount: 50,
+			scalar: 2,
+			angle: 60,
+			spread: 55,
+			origin: { x: 0 }
+		});
+		confetti({
+			...defaults,
+			particleCount: 50,
+			scalar: 2,
+			angle: 120,
+			spread: 55,
+			origin: { x: 1 }
+		});
+
+		confetti({
+			...defaults,
+			particleCount: 25,
+			scalar: 3,
+			angle: 60,
+			spread: 55,
+			origin: { x: 0 }
+		});
+
+		confetti({
+			...defaults,
+			particleCount: 25,
+			scalar: 3,
+			angle: 120,
+			spread: 55,
+			origin: { x: 1 }
+		});
+
+		confetti({
+			...defaults,
+			particleCount: 10,
+			scalar: 4,
+			angle: 60,
+			spread: 55,
+			origin: { x: 0 }
+		});
+		confetti({
+			...defaults,
+			particleCount: 10,
+			scalar: 4,
+			angle: 120,
+			spread: 55,
+			origin: { x: 1 }
+		});
+	}
 
 	async function navigateRsvpCb() {
 		await goto('/rsvp');

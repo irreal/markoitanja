@@ -38,6 +38,7 @@
 	"dependencies": {
 		"@tsparticles/slim": "^3.3.0",
 		"@tsparticles/svelte": "^3.0.0",
-		"daisyui": "^4.10.2"
+		"daisyui": "^4.10.2",
+		"tsparticles-confetti": "^2.12.0"
 	}
 }
