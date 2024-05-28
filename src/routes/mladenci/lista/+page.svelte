@@ -5,7 +5,10 @@
 
 	let rows: Record<string, any>[] = [];
 	onMount(async () => {
-		const { data, error } = await client.from('tim_rsvp').select('*');
+		const { data, error } = await client
+			.from('tim_rsvp')
+			.select('*')
+			.order('created_at', { ascending: true });
 		if (error) {
 			alert('jbg, sjebalo se nešto u učitavanju. ako neće nikako, zovi Miloša');
 			return;
