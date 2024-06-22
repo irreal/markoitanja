@@ -47,7 +47,7 @@
 		>
 			<button class="rounded-lg" on:click={navigatePozivnicaCb}>Tvoja Pozivnica</button>
 			<!-- <button class="rounded-lg" on:click={navigateFotografCb}>Budi naš Fotograf</button> -->
-			<button class="rounded-lg" on:click={navigateRsvpCb}>Potvrdi Dolazak</button>
+			<!-- <button class="rounded-lg" on:click={navigateRsvpCb}>Potvrdi Dolazak</button> -->
 		</div>
 	</div>
 </div>

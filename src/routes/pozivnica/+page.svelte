@@ -170,7 +170,7 @@
 			mapa do restorana
 		</a>
 	</p>
-	<button class="rounded-lg" on:click={navigateRsvpCb}>Potvrdi Dolazak</button>
+	<!-- <button class="rounded-lg" on:click={navigateRsvpCb}>Potvrdi Dolazak</button> -->
 </div>
 
 <style>
