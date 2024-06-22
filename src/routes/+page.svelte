@@ -3,14 +3,88 @@
 
 	import Counter from './counter.svelte';
 	import { goto } from '$app/navigation';
+	import { confetti } from 'tsparticles-confetti';
+	import { browser } from '$app/environment';
+	function makeConffetti() {
+		confetti({
+			...defaults,
+			particleCount: 50,
+			scalar: 2,
+			angle: 60,
+			spread: 55,
+			origin: { x: 0 }
+		});
+		confetti({
+			...defaults,
+			particleCount: 50,
+			scalar: 2,
+			angle: 120,
+			spread: 55,
+			origin: { x: 1 }
+		});
+
+		confetti({
+			...defaults,
+			particleCount: 25,
+			scalar: 3,
+			angle: 60,
+			spread: 55,
+			origin: { x: 0 }
+		});
+
+		confetti({
+			...defaults,
+			particleCount: 25,
+			scalar: 3,
+			angle: 120,
+			spread: 55,
+			origin: { x: 1 }
+		});
+
+		confetti({
+			...defaults,
+			particleCount: 10,
+			scalar: 4,
+			angle: 60,
+			spread: 55,
+			origin: { x: 0 }
+		});
+		confetti({
+			...defaults,
+			particleCount: 10,
+			scalar: 4,
+			angle: 120,
+			spread: 55,
+			origin: { x: 1 }
+		});
+	}
+	const defaults = {
+		spread: 360,
+		ticks: 600,
+		gravity: 0,
+		decay: 0.94,
+		startVelocity: 30,
+		shapes: ['heart'],
+		colors: ['FFC0CB', 'FF69B4', 'FF1493', 'C71585']
+	};
+	let interval: number | null = null;
 
 	let currentTime = Date.now();
-	const targetTime = new Date(2024, 5, 23, 14, 30, 0, 0).getTime();
-	$: diff = targetTime - currentTime;
+	const targetTime = new Date(2024, 5, 23, 1, 5, 10, 0).getTime();
+	$: diff = Math.max(targetTime - currentTime, 0);
 	$: diffDays = Math.floor(diff / (1000 * 60 * 60 * 24));
 	$: diffHours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 	$: diffMinutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 	$: diffSeconds = Math.floor((diff % (1000 * 60)) / 1000);
+	$: done = diff <= 0;
+	let triggered = false;
+	$: {
+		if (browser && done && !triggered) {
+			triggered = true;
+			makeConffetti();
+			setInterval(makeConffetti, 500);
+		}
+	}
 	onMount(() => {
 		const timer = setInterval(() => {
 			currentTime = Date.now();
@@ -34,8 +108,15 @@
 	class="mx-auto flex min-h-[100vh] w-full max-w-[700px] flex-col items-center justify-end gap-6 text-center text-2xl text-[#4D5D26]"
 >
 	<div class="style-script-regular text-5xl leading-snug text-black">
-		Odbrojavajte sa nama do<br />velikog dana
+		{#if done}
+			Veliki dan je stigao!
+		{:else}
+			Odbrojavajte sa nama do<br />velikog dana
+		{/if}
 	</div>
+	{#if done}
+		<img src="https://media.tenor.com/_1hMqyFC4LEAAAAM/pop-cat.gif" alt="pop cat" />
+	{/if}
 	<div class="w-full">
 		<Counter
 			counter={diffDays}
