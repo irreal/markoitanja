@@ -70,7 +70,7 @@
 	let interval: number | null = null;
 
 	let currentTime = Date.now();
-	const targetTime = new Date(2024, 5, 23, 1, 5, 10, 0).getTime();
+	const targetTime = new Date(2024, 5, 23, 14, 30, 0, 0).getTime();
 	$: diff = Math.max(targetTime - currentTime, 0);
 	$: diffDays = Math.floor(diff / (1000 * 60 * 60 * 24));
 	$: diffHours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
